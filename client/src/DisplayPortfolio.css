@@ -1,0 +1,41 @@
+.DisplayPortfolio-info p {
+  font-size: 16px;
+}
+
+.DisplayPortfolio-assets {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 60%;
+}
+
+.DisplayPortfolio-assets td, .DisplayPortfolio-assets th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.DisplayPortfolio-assets tr:nth-child(even){background-color: #f2f2f2;}
+
+.DisplayPortfolio-assets tr:hover {background-color: #ddd;}
+
+.DisplayPortfolio-assets th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.DisplayPortfolio button {
+  cursor: pointer;
+  width: 70px;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 10px 2px;
+  padding: 3px;
+  font-size: 15px;
+}

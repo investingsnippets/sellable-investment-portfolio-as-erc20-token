@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  develop:
+    container_name: ethereum-develop
+    build: .
+    healthcheck:
+      test: curl -sf -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' localhost:8545
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    command: >
+      sh -c "ganache-cli -b 3 --gasPrice 110000000000 -l 30000000 --host 0.0.0.0 -m \"sample dog come year spray crawl learn general detect silver jelly pilot\" & sleep 5 &&
+             yarn install &&
+             truffle compile --network development &&
+             truffle test &&
+             truffle migrate --network development &&
+             cd client &&
+             yarn install && 
+             yarn start"
+    ports:
+      - 3000:3000
+      - 8545:8545
+    tty: true
+    volumes:
+      - .:/app
+    working_dir: /app

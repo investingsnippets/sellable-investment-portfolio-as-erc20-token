@@ -1,0 +1,80 @@
+.ManagePortfolio {
+  display: flex;
+  flex-direction: row;
+}
+
+.ManagePortfolio-add {
+  background: #F9F9F9;
+  padding: 25px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 50%;
+}
+
+.ManagePortfolio-change {
+  background: #F9F9F9;
+  padding: 25px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 50%;
+}
+
+.ManagePortfolio-change-remove {
+  background: #F9F9F9;
+  display: flex;
+  flex-direction: row;
+}
+
+.ManagePortfolio input[type="text"] {
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px 0;
+  padding: 10px;
+}
+
+.ManagePortfolio input[type="text"]:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+.ManagePortfolio input[type="text"]:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+.ManagePortfolio button {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.ManagePortfolio-change {
+  width: auto;
+  float: right;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}
+
