@@ -1,8 +1,8 @@
 # Simple Portfolio Management On Ethereum
 
-This project is a showcase of a simple ECR20 token deployed on a local Ethereum Blockchain.
+This project is a showcase of a simple ECR20 token deployed on a local Ethereum Blockchain. It allows the owner of the token to build a portfolio of other tokens by providing simple weights.
 
-What it does? It simply allows the owner of the token to build a simple portfolio of other tokens by providing simple weights.
+![png](portfolio-token.png)
 
 No fancy business like buying other tokens, allowing other portfolio managers or following the price of the token.
 
