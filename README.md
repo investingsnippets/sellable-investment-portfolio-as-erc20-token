@@ -1,10 +1,12 @@
-# Simple Portfolio Management On Ethereum
+# Example of a tradeable investment portfolio on Ethereum
 
 This project is a showcase of a simple ERC20 token deployed on a local Ethereum Blockchain. It allows the owner of the token to build a portfolio of other tokens by providing simple weights.
 
-![png](portfolio-token.png)
+No fancy business like buying other tokens or following the price of the token.
 
-No fancy business like buying other tokens, allowing other portfolio managers or following the price of the token.
+Read more on this [blog post](https://www.investingsnippets.com/post/an-ethereum-erc20-token-mimicking-a-tradeable-investment-portfolio).
+
+![png](portfolio-token.png)
 
 ## Develop
 
