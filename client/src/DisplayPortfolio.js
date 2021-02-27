@@ -8,11 +8,19 @@ class DisplayPortfolio extends React.Component {
     const { drizzle, drizzleState } = this.props;
     const contract = drizzle.contracts.PortfolioToken;
     const address = contract.address;
+    const tokenName = await contract.methods.name().call();
+    const tokenSymbol = await contract.methods.symbol().call();
+    const tokenDecimals = await contract.methods.decimals().call();
+    const tokenTotalSupply = await contract.methods.totalSupply().call();
     const assetList = await this.fetchAssets(contract);
     
     this.setState({ 
       ...this.state,
       address,
+      tokenName,
+      tokenSymbol,
+      tokenDecimals,
+      tokenTotalSupply,
       contract,
       assetList,
       refresh: false,
@@ -24,13 +32,10 @@ class DisplayPortfolio extends React.Component {
     if (this.state.refresh) {
       const { drizzle, drizzleState } = prevProps;
       const contract = drizzle.contracts.PortfolioToken;
-      console.log(contract);
-      const address = contract.address;
       const assetList = await this.fetchAssets(contract);
       
       this.setState({ 
         ...this.state,
-        address,
         contract,
         assetList,
         refresh: false,
@@ -90,14 +95,20 @@ class DisplayPortfolio extends React.Component {
   }
 
   render() {
-    const {address, assetList} = this.state;
+    const {address, assetList, tokenName, tokenSymbol,
+      tokenDecimals,
+      tokenTotalSupply} = this.state;
     return (
       this.state.isLoading? 'Loading...' : 
       <div className='DisplayPortfolio'>
         <h2>Portfolio Info</h2>
         
         <div className="DisplayPortfolio-info">
-        <p><b>ERC20 address</b>: {address}</p>
+        <p><b>Token (ERC20) address</b>: {address}</p>
+        <p><b>Token Name</b>: {tokenName}</p>
+        <p><b>Token Symbol</b>: {tokenSymbol}</p>
+        <p><b>Token Decimals</b>: {tokenDecimals}</p>
+        <p><b>Token Total Supply</b>: {tokenTotalSupply}</p>
         </div>
         
         <h2>Portfolio Assets</h2>
