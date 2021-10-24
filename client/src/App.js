@@ -2,6 +2,9 @@ import './App.css';
 import DisplayPortfolio from "./DisplayPortfolio";
 import ManagePortfolio from "./ManagePortfolio";
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import React, { Component } from 'react';
 
 class App extends Component {
@@ -25,6 +28,7 @@ class App extends Component {
       if (this.state.loading) return "Loading Drizzle...";
       return (
         <div className="App">
+          <ToastContainer />
           <DisplayPortfolio
             drizzle={this.props.drizzle}
             drizzleState={this.state.drizzleState}

@@ -30,6 +30,10 @@ contract PortfolioToken is ERC20 {
 
     address PortfolioManager;
 
+    event AssetAdded(address indexed _asset_addr, uint8 _weight, string _name, string _symbol, uint _timeStamp);
+    event AssetChanged(address indexed _asset_addr, uint8 _weight, uint _timeStamp);
+    event AssetDeleted(address indexed _assetAddressp);
+
     struct Asset {
         uint8 weight; // weight in the Portfolio
         uint timeStamp; // last updated
@@ -72,17 +76,20 @@ contract PortfolioToken is ERC20 {
         assets[_assetAddress].timeStamp = block.timestamp;
         isResource[_assetAddress] = true;
         allAssets.push(_assetAddress);
+        emit AssetAdded(_assetAddress, _weight, _name, _symbol, block.timestamp);
     }
 
     function editAsset(address _assetAddress, uint8 _weight) external onlyManager {
         assets[_assetAddress].weight = _weight;
         assets[_assetAddress].timeStamp = block.timestamp;
+        emit AssetChanged(_assetAddress, _weight, block.timestamp);
     }
 
     function removeAsset(address _assetAddress) external onlyManager {
         delete assets[_assetAddress];
         // allAssets = allAssets.remove(_assetAddress);
         isResource[_assetAddress] = false;
+        emit AssetDeleted(_assetAddress);
     }
 
     function getAssets() external view returns(address[] memory) {

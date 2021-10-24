@@ -6,6 +6,7 @@ class DisplayPortfolio extends React.Component {
   
   async componentDidMount() {
     const { drizzle, drizzleState } = this.props;
+    const connectedWallet = drizzleState.accounts[0];
     const contract = drizzle.contracts.PortfolioToken;
     const address = contract.address;
     const tokenName = await contract.methods.name().call();
@@ -16,6 +17,7 @@ class DisplayPortfolio extends React.Component {
     
     this.setState({ 
       ...this.state,
+      connectedWallet,
       address,
       tokenName,
       tokenSymbol,
@@ -31,11 +33,13 @@ class DisplayPortfolio extends React.Component {
   async componentDidUpdate(prevProps, prevState) {
     if (this.state.refresh) {
       const { drizzle, drizzleState } = prevProps;
+      const connectedWallet = drizzleState.accounts[0];
       const contract = drizzle.contracts.PortfolioToken;
       const assetList = await this.fetchAssets(contract);
       
       this.setState({ 
         ...this.state,
+        connectedWallet,
         contract,
         assetList,
         refresh: false,
@@ -95,12 +99,14 @@ class DisplayPortfolio extends React.Component {
   }
 
   render() {
-    const {address, assetList, tokenName, tokenSymbol,
+    const {connectedWallet, address, assetList, tokenName, tokenSymbol,
       tokenDecimals,
       tokenTotalSupply} = this.state;
     return (
       this.state.isLoading? 'Loading...' : 
       <div className='DisplayPortfolio'>
+        <h3>Wallet: {connectedWallet}</h3>
+
         <h2>Portfolio Info</h2>
         
         <div className="DisplayPortfolio-info">
